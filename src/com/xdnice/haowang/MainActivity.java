@@ -9,11 +9,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.ImageButton;
 
-public class MainActivity extends  SlidingFragmentActivity{
+public class MainActivity extends  SlidingFragmentActivity implements OnClickListener{
 
 	MenuFragment mFrag;
+	ImageButton img_btn_menu_left;
 	
    @Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -49,21 +53,22 @@ public class MainActivity extends  SlidingFragmentActivity{
 		
 	//	getActionBar().setDisplayHomeAsUpEnabled(true);
 		
+		img_btn_menu_left = (ImageButton) this.findViewById(R.id.img_btn_menu_left);
+		img_btn_menu_left.setOnClickListener(this);
+		
 	}
-   
-   
-   @Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+
+	@Override
+	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		switch(item.getItemId()){
-			case android.R.id.home:
-				toggle();
-				return true;
+		if(v.getId() == R.id.img_btn_menu_left){
+			toggle();
 		}
-		   
-		return super.onOptionsItemSelected(item);
 	}
    
+   
+
+
   
    
 }

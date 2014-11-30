@@ -4,6 +4,9 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
-    
+    <include layout="@layout/main_header"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        />
 
 </RelativeLayout>
