@@ -7,6 +7,15 @@
     <include layout="@layout/main_header"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/actionbar_height"
+        android:layout_alignParentTop="true"
         />
+    
+    
+    <include layout="@layout/main_footer"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/footer_height"
+        android:layout_alignParentBottom="true"
+        />
+    
 
 </RelativeLayout>

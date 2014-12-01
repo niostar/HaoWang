@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/footer_height"
+    android:id="@+id/main_footer"
+    >
+    
+    
+    <!-- 放置5个按钮 -->
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/footer_height"
+        android:orientation="horizontal"
+        >
+        
+        <LinearLayout 
+            android:id="@+id/ll_btn_recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bottombaritemback"
+            android:clickable="true"
+            >
+            
+            <ImageView
+                android:id="@+id/img_footer_recommend" 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/recommend"
+                />
+            <TextView 
+                android:id="@+id/tv_footer_recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:text="推荐"
+                />
+            
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/ll_btn_classify"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bottombaritemback"
+            android:clickable="true"
+            >
+            
+            <ImageView 
+                android:id="@+id/img_footer_classify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/classify"
+                />
+            <TextView 
+                android:id="@+id/tv_footer_classify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="软件"
+                />
+            
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/ll_btn_list"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bottombaritemback"
+            android:clickable="true"
+            >
+            
+            <ImageView 
+                android:id="@+id/img_footer_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/list"
+                />
+            <TextView 
+                android:id="@+id/tv_footer_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="游戏"
+                />
+            
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/ll_btn_manage"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bottombaritemback"
+            android:clickable="true"
+            >
+            
+            <ImageView 
+                android:id="@+id/img_footer_manage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/manage"
+                />
+            <TextView 
+                android:id="@+id/tv_footer_manage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="管理"
+                />
+            
+        </LinearLayout>
+        
+       
+        
+        <LinearLayout 
+            android:id="@+id/ll_btn_download"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bottombaritemback"
+            android:clickable="true"
+            >
+            
+            <ImageView 
+                android:id="@+id/img_footer_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/download"
+                />
+            <TextView 
+                android:id="@+id/tv_footer_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下载"
+                />
+            
+        </LinearLayout>
+        
+        
+       
+        
+    </LinearLayout>
+    
+
+</RelativeLayout>
