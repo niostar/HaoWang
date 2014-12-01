@@ -6,7 +6,7 @@
 
     <include layout="@layout/main_header"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/actionbar_height"
         />
 
 </RelativeLayout>

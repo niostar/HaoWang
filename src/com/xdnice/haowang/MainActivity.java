@@ -23,7 +23,6 @@ public class MainActivity extends  SlidingFragmentActivity implements OnClickLis
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		
 		setTitle("HaoWang");

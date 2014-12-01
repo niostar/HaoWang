@@ -901,6 +901,7 @@ containing a value of this type.
         /**  Minimum width of the search view text entry area. 
          */
         public static final int abs__search_view_text_min_width=0x7f07000b;
+        public static final int actionbar_height=0x7f070011;
         public static final int shadow_width=0x7f07000f;
         public static final int slidingmenu_offset=0x7f070010;
     }
@@ -1017,12 +1018,17 @@ containing a value of this type.
         public static final int abs__textfield_searchview_right_holo_dark=0x7f02006d;
         public static final int abs__textfield_searchview_right_holo_light=0x7f02006e;
         public static final int abs__toast_frame=0x7f02006f;
-        public static final int ic_launcher=0x7f020070;
-        public static final int menu_left=0x7f020071;
-        public static final int menu_left_normal=0x7f020072;
-        public static final int menu_left_press=0x7f020073;
-        public static final int shadow=0x7f020074;
-        public static final int title_bar_bg=0x7f020075;
+        public static final int home_search=0x7f020070;
+        public static final int home_search_edit=0x7f020071;
+        public static final int ic_launcher=0x7f020072;
+        public static final int main_actionbar_scan=0x7f020073;
+        public static final int menu_left=0x7f020074;
+        public static final int menu_left_normal=0x7f020075;
+        public static final int menu_left_press=0x7f020076;
+        public static final int qr_icon_normal=0x7f020077;
+        public static final int qr_icon_pressed=0x7f020078;
+        public static final int shadow=0x7f020079;
+        public static final int title_bar_bg=0x7f02007a;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f040026;
@@ -1066,12 +1072,16 @@ containing a value of this type.
         public static final int abs__up=0x7f04000b;
         public static final int disableHome=0x7f040009;
         public static final int edit_query=0x7f04002c;
+        public static final int et_home_header_edit=0x7f04003d;
         public static final int fullscreen=0x7f040013;
         public static final int homeAsUp=0x7f040006;
+        public static final int img_btn_home_scan=0x7f04003c;
+        public static final int img_btn_home_search=0x7f04003b;
         public static final int img_btn_menu_left=0x7f040039;
         public static final int left=0x7f040010;
-        public static final int leftmenu=0x7f04003a;
+        public static final int leftmenu=0x7f04003e;
         public static final int listMode=0x7f040002;
+        public static final int ll_header_search=0x7f04003a;
         public static final int main_header=0x7f040038;
         public static final int margin=0x7f040012;
         public static final int none=0x7f040014;
@@ -1081,7 +1091,7 @@ containing a value of this type.
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
-        public static final int slidingmenumain=0x7f04003b;
+        public static final int slidingmenumain=0x7f04003f;
         public static final int tabMode=0x7f040003;
         public static final int useLogo=0x7f040004;
         public static final int wrap_content=0x7f040000;
