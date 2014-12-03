@@ -2,4 +2,5 @@
 <resources>
    <color name="footer_text_normal">#CCCCCC</color>
    <color name="footer_text_selected">#FFFFFF</color>
+   <color name="tab_item_click_bg">#E0E3E5</color>
 </resources>

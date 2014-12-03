@@ -25,6 +25,9 @@ public class MainActivity extends  SlidingFragmentActivity implements OnClickLis
 
 	private static final String TAG = "MainActivity";
 	
+	//customize the SlidingMenu
+	SlidingMenu sm;
+	
 	MenuFragment mFrag;  //slidingMenu
 	ImageButton img_btn_menu_left; //left menu btn
 	LinearLayout[] ll_footer_btn;
@@ -73,7 +76,7 @@ public class MainActivity extends  SlidingFragmentActivity implements OnClickLis
 	*/
 	private void addFragmentForFooter(){
 		
-		mRecommendFragment = new RecommendFragment();
+		mRecommendFragment = new RecommendFragment(sm);
 		mClassifyFragment  = new ClassifyFragment();
 		mListGameFragment = new ListGameFragment();
 		mManageFragment = new ManageFragment();
@@ -196,8 +199,7 @@ public class MainActivity extends  SlidingFragmentActivity implements OnClickLis
 			t.commit();
 		}
 		
-		//customize the SlidingMenu
-		SlidingMenu sm = getSlidingMenu();
+		sm = getSlidingMenu();
 		sm.setShadowWidthRes(R.dimen.shadow_width);
 		sm.setShadowDrawable(R.drawable.shadow);
 		sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
@@ -210,6 +212,8 @@ public class MainActivity extends  SlidingFragmentActivity implements OnClickLis
 		//为左上角的按钮添加监听
 		img_btn_menu_left = (ImageButton) this.findViewById(R.id.img_btn_menu_left);
 		img_btn_menu_left.setOnClickListener(this);
+		
+		
    	}
    
    

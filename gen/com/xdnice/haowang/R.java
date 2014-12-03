@@ -799,12 +799,13 @@ containing a value of this type.
         public static final int abs__bright_foreground_disabled_holo_light=0x7f050005;
         public static final int abs__bright_foreground_holo_dark=0x7f050002;
         public static final int abs__bright_foreground_holo_light=0x7f050003;
-        public static final int abs__primary_text_disable_only_holo_dark=0x7f050008;
-        public static final int abs__primary_text_disable_only_holo_light=0x7f050009;
-        public static final int abs__primary_text_holo_dark=0x7f05000a;
-        public static final int abs__primary_text_holo_light=0x7f05000b;
+        public static final int abs__primary_text_disable_only_holo_dark=0x7f050009;
+        public static final int abs__primary_text_disable_only_holo_light=0x7f05000a;
+        public static final int abs__primary_text_holo_dark=0x7f05000b;
+        public static final int abs__primary_text_holo_light=0x7f05000c;
         public static final int footer_text_normal=0x7f050006;
         public static final int footer_text_selected=0x7f050007;
+        public static final int tab_item_click_bg=0x7f050008;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1027,23 +1028,23 @@ containing a value of this type.
         public static final int classify_select=0x7f020073;
         public static final int download=0x7f020074;
         public static final int download_select=0x7f020075;
-        public static final int fast_title_bg=0x7f020076;
-        public static final int home_search=0x7f020077;
-        public static final int home_search_edit=0x7f020078;
-        public static final int ic_launcher=0x7f020079;
-        public static final int list=0x7f02007a;
-        public static final int list_select=0x7f02007b;
-        public static final int main_actionbar_scan=0x7f02007c;
-        public static final int manage=0x7f02007d;
-        public static final int manage_select=0x7f02007e;
-        public static final int menu_left=0x7f02007f;
-        public static final int menu_left_normal=0x7f020080;
-        public static final int menu_left_press=0x7f020081;
-        public static final int qr_icon_normal=0x7f020082;
-        public static final int qr_icon_pressed=0x7f020083;
-        public static final int recommend=0x7f020084;
-        public static final int recommend_select=0x7f020085;
-        public static final int shadow=0x7f020086;
+        public static final int home_search=0x7f020076;
+        public static final int home_search_edit=0x7f020077;
+        public static final int ic_launcher=0x7f020078;
+        public static final int list=0x7f020079;
+        public static final int list_select=0x7f02007a;
+        public static final int main_actionbar_scan=0x7f02007b;
+        public static final int manage=0x7f02007c;
+        public static final int manage_select=0x7f02007d;
+        public static final int menu_left=0x7f02007e;
+        public static final int menu_left_normal=0x7f02007f;
+        public static final int menu_left_press=0x7f020080;
+        public static final int qr_icon_normal=0x7f020081;
+        public static final int qr_icon_pressed=0x7f020082;
+        public static final int recommend=0x7f020083;
+        public static final int recommend_select=0x7f020084;
+        public static final int shadow=0x7f020085;
+        public static final int tab_item_bg=0x7f020086;
         public static final int title_bar_bg=0x7f020087;
     }
     public static final class id {
@@ -1100,6 +1101,7 @@ containing a value of this type.
         public static final int img_footer_list=0x7f080043;
         public static final int img_footer_manage=0x7f080046;
         public static final int img_footer_recommend=0x7f08003d;
+        public static final int img_tab_pointer=0x7f080055;
         public static final int left=0x7f080011;
         public static final int leftmenu=0x7f080051;
         public static final int listMode=0x7f080008;
@@ -1121,13 +1123,17 @@ containing a value of this type.
         public static final int showCustom=0x7f08000d;
         public static final int showHome=0x7f08000e;
         public static final int showTitle=0x7f08000f;
-        public static final int slidingmenumain=0x7f080052;
+        public static final int slidingmenumain=0x7f080057;
         public static final int tabMode=0x7f08000a;
+        public static final int tab_pager=0x7f080056;
+        public static final int tv_classify=0x7f080053;
         public static final int tv_footer_classify=0x7f080041;
         public static final int tv_footer_download=0x7f08004a;
         public static final int tv_footer_list=0x7f080044;
         public static final int tv_footer_manage=0x7f080047;
         public static final int tv_footer_recommend=0x7f08003e;
+        public static final int tv_ranking=0x7f080054;
+        public static final int tv_sift=0x7f080052;
         public static final int useLogo=0x7f080010;
         public static final int wrap_content=0x7f080007;
     }
@@ -1158,17 +1164,20 @@ containing a value of this type.
         public static final int abs__simple_dropdown_hint=0x7f030014;
         public static final int activity_main=0x7f030015;
         public static final int classify_fragment=0x7f030016;
-        public static final int download_fragment=0x7f030017;
-        public static final int leftmenu_fragment=0x7f030018;
-        public static final int list_fragment=0x7f030019;
-        public static final int main_footer=0x7f03001a;
-        public static final int main_header=0x7f03001b;
-        public static final int manage_fragment=0x7f03001c;
-        public static final int menu_frame=0x7f03001d;
-        public static final int recommend_fragment=0x7f03001e;
-        public static final int sherlock_spinner_dropdown_item=0x7f03001f;
-        public static final int sherlock_spinner_item=0x7f030020;
-        public static final int slidingmenumain=0x7f030021;
+        public static final int classify_pager=0x7f030017;
+        public static final int download_fragment=0x7f030018;
+        public static final int leftmenu_fragment=0x7f030019;
+        public static final int list_fragment=0x7f03001a;
+        public static final int main_footer=0x7f03001b;
+        public static final int main_header=0x7f03001c;
+        public static final int manage_fragment=0x7f03001d;
+        public static final int menu_frame=0x7f03001e;
+        public static final int ranking_pager=0x7f03001f;
+        public static final int recommend_fragment=0x7f030020;
+        public static final int sherlock_spinner_dropdown_item=0x7f030021;
+        public static final int sherlock_spinner_item=0x7f030022;
+        public static final int sift_pager=0x7f030023;
+        public static final int slidingmenumain=0x7f030024;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
