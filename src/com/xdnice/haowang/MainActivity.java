@@ -1,8 +1,11 @@
 package com.xdnice.haowang;
 
-import android.graphics.Color;
+import android.app.ListFragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -12,14 +15,29 @@ import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
+import com.xdnice.fragment.ClassifyFragment;
+import com.xdnice.fragment.DownloadFragment;
+import com.xdnice.fragment.ListGameFragment;
+import com.xdnice.fragment.ManageFragment;
+import com.xdnice.fragment.RecommendFragment;
 
 public class MainActivity extends  SlidingFragmentActivity implements OnClickListener{
 
-	MenuFragment mFrag;
-	ImageButton img_btn_menu_left;
+	private static final String TAG = "MainActivity";
+	
+	MenuFragment mFrag;  //slidingMenu
+	ImageButton img_btn_menu_left; //left menu btn
 	LinearLayout[] ll_footer_btn;
 	ImageView[] img_footer_holder;
 	TextView[] tv_footer_holder;
+	
+	Fragment[] footerFragment;
+	RecommendFragment mRecommendFragment;  //recommend fragment
+	ClassifyFragment mClassifyFragment;
+	ListGameFragment mListGameFragment;
+	ManageFragment mManageFragment;
+	DownloadFragment mDownloadFragment;
+	int currentFragmentId = -1;  //标记当前的fragment的id
 	
 	int[] footer_image_normal_id={
 			R.drawable.recommend,
@@ -44,14 +62,62 @@ public class MainActivity extends  SlidingFragmentActivity implements OnClickLis
 		setContentView(R.layout.activity_main);
 		
 		initSlidingMenu(savedInstanceState);
+		addFragmentForFooter();
 		initFooterBtn();
-		
-		img_btn_menu_left = (ImageButton) this.findViewById(R.id.img_btn_menu_left);
-		img_btn_menu_left.setOnClickListener(this);
 		
 	}
    
    
+   /**
+	*  为下面的菜单选择添加对应的fragment 
+	*/
+	private void addFragmentForFooter(){
+		
+		mRecommendFragment = new RecommendFragment();
+		mClassifyFragment  = new ClassifyFragment();
+		mListGameFragment = new ListGameFragment();
+		mManageFragment = new ManageFragment();
+		mDownloadFragment = new DownloadFragment();
+		
+		FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+		fragmentTransaction.add(R.id.ContentFragment, mRecommendFragment, "recommend");
+		fragmentTransaction.add(R.id.ContentFragment, mClassifyFragment,"classify");
+		fragmentTransaction.add(R.id.ContentFragment, mListGameFragment,"list");
+		fragmentTransaction.add(R.id.ContentFragment, mManageFragment,"manage");
+		fragmentTransaction.add(R.id.ContentFragment, mDownloadFragment,"download");
+		
+		fragmentTransaction.hide(mRecommendFragment);
+		fragmentTransaction.hide(mClassifyFragment);
+		fragmentTransaction.hide(mListGameFragment);
+		fragmentTransaction.hide(mManageFragment);
+		fragmentTransaction.hide(mDownloadFragment);
+		fragmentTransaction.commit();
+		
+		footerFragment = new Fragment[5];
+		footerFragment[0] = mRecommendFragment;
+		footerFragment[1] = mClassifyFragment;
+		footerFragment[2] = mListGameFragment;
+		footerFragment[3] = mManageFragment;
+		footerFragment[4] = mDownloadFragment;
+		
+    }
+   
+   
+	private void choseOneFragment(int id){
+		FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+		//Log.v(TAG, "choseOneFragment  --->currentFragmentId="+currentFragmentId);
+		if(currentFragmentId != -1){
+			fragmentTransaction.hide(footerFragment[currentFragmentId]);
+		}
+		fragmentTransaction.show(footerFragment[id]);
+		currentFragmentId = id;
+		fragmentTransaction.commit();
+	}
+	
+   
+    /**
+     * 初始化底部的按钮 菜单
+     */
     private void initFooterBtn(){
     	
     	ll_footer_btn = new LinearLayout[5];
@@ -87,9 +153,14 @@ public class MainActivity extends  SlidingFragmentActivity implements OnClickLis
     	
     	//设置默认的开机选择id
     	choseFooterBtn(0);
+    	choseOneFragment(0);
     	
     }
     
+    /**
+     * @param id
+     * 用于选点某个菜单项被选中
+     */
     private void choseFooterBtn(int id){
     	ll_footer_btn[id].setBackgroundResource(R.drawable.bottombaritemback_select);
     	img_footer_holder[id].setBackgroundResource(footer_image_select_id[id]);
@@ -105,6 +176,10 @@ public class MainActivity extends  SlidingFragmentActivity implements OnClickLis
    
    
 
+   	/**
+   	 * @param savedInstanceState
+   	 * 用于初始化 slidingMenu  并且为左上角的按钮添加监听
+   	 */
    	private void initSlidingMenu(Bundle savedInstanceState){
 	   	//set the behind View
 		setBehindContentView(R.layout.menu_frame);
@@ -130,6 +205,11 @@ public class MainActivity extends  SlidingFragmentActivity implements OnClickLis
 		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 		sm.setMode(SlidingMenu.LEFT);
 //		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		
+		//为左上角的按钮添加监听
+		img_btn_menu_left = (ImageButton) this.findViewById(R.id.img_btn_menu_left);
+		img_btn_menu_left.setOnClickListener(this);
    	}
    
    
@@ -142,18 +222,23 @@ public class MainActivity extends  SlidingFragmentActivity implements OnClickLis
 			break;
 		case R.id.ll_btn_recommend:
 			choseFooterBtn(0);
+			choseOneFragment(0);
 			break;
 		case R.id.ll_btn_classify:
 			choseFooterBtn(1);
+			choseOneFragment(1);
 			break;
 		case R.id.ll_btn_list:
 			choseFooterBtn(2);
+			choseOneFragment(2);
 			break;
 		case R.id.ll_btn_manage:
 			choseFooterBtn(3);
+			choseOneFragment(3);
 			break;
 		case R.id.ll_btn_download:
 			choseFooterBtn(4);
+			choseOneFragment(4);
 			break;
 			
 		default:
