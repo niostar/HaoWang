@@ -1,3 +1,3 @@
-This application is for HaoWang APP Market
+这是一个练手的项目
 Need library: slidingMenu actionbarsherlock
 
