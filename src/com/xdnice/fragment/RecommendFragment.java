@@ -33,7 +33,7 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 	
 	private View view;
 	private TextView tvSift;  //精选
-	private TextView tvclassify; //分类
+	private TextView tvClassify; //分类
 	private TextView tvRanking;  //排行
 	//游标
 	private ImageView imgTabPointer;
@@ -132,19 +132,40 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 	 */
 	private void initTabTextColor(){
 		tvSift = (TextView) view.findViewById(R.id.tv_sift);
-		tvclassify = (TextView) view.findViewById(R.id.tv_classify);
+		tvClassify = (TextView) view.findViewById(R.id.tv_classify);
 		tvRanking = (TextView) view.findViewById(R.id.tv_ranking);
 		
 		tvSift.setTextColor(getResources().getColor(android.R.color.black));
-		tvclassify.setTextColor(getResources().getColor(android.R.color.black));
+		tvClassify.setTextColor(getResources().getColor(android.R.color.black));
 		tvRanking.setTextColor(getResources().getColor(android.R.color.black));
 		
 		tvSift.setOnClickListener(this);
-		tvclassify.setOnClickListener(this);
+		tvClassify.setOnClickListener(this);
 		tvRanking.setOnClickListener(this);
 	}
 
 
+	/**
+	 * @param id
+	 * 当某一个tab选中后 设定颜色
+	 */
+	private void setTabTextColor(int id){
+		tvSift.setTextColor(getResources().getColor(android.R.color.black));
+		tvClassify.setTextColor(getResources().getColor(android.R.color.black));
+		tvRanking.setTextColor(getResources().getColor(android.R.color.black));
+		switch (id) {
+		case 0:
+			tvSift.setTextColor(getResources().getColor(R.color.tab_item_click_text_color));
+			break;
+		case 1:
+			tvClassify.setTextColor(getResources().getColor(R.color.tab_item_click_text_color));
+			break;
+		case 2:
+			tvRanking.setTextColor(getResources().getColor(R.color.tab_item_click_text_color));
+		default:
+			break;
+		}
+	}
 	
 	
 	@Override
@@ -210,6 +231,7 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 	public void onPageSelected(int arg0) {
 //		Log.v(TAG, "onPageSelected--->arg0="+arg0);
 		selectPageIndex = arg0;
+		setTabTextColor(selectPageIndex);
 		if(arg0 == 0){
 			sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 		}else{

@@ -799,13 +799,14 @@ containing a value of this type.
         public static final int abs__bright_foreground_disabled_holo_light=0x7f050005;
         public static final int abs__bright_foreground_holo_dark=0x7f050002;
         public static final int abs__bright_foreground_holo_light=0x7f050003;
-        public static final int abs__primary_text_disable_only_holo_dark=0x7f050009;
-        public static final int abs__primary_text_disable_only_holo_light=0x7f05000a;
-        public static final int abs__primary_text_holo_dark=0x7f05000b;
-        public static final int abs__primary_text_holo_light=0x7f05000c;
+        public static final int abs__primary_text_disable_only_holo_dark=0x7f05000a;
+        public static final int abs__primary_text_disable_only_holo_light=0x7f05000b;
+        public static final int abs__primary_text_holo_dark=0x7f05000c;
+        public static final int abs__primary_text_holo_light=0x7f05000d;
         public static final int footer_text_normal=0x7f050006;
         public static final int footer_text_selected=0x7f050007;
         public static final int tab_item_click_bg=0x7f050008;
+        public static final int tab_item_click_text_color=0x7f050009;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
