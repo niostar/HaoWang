@@ -16,10 +16,12 @@ public class MyRecommendGridViewAdapter extends BaseAdapter {
 
 	List<RecommendGridItem> lists;
 	LayoutInflater inflater;
+	int layoutId;
 	
-	public MyRecommendGridViewAdapter(List<RecommendGridItem> lists,Context context) {
+	public MyRecommendGridViewAdapter(List<RecommendGridItem> lists,Context context,int layoutId) {
 		super();
 		this.lists = lists;
+		this.layoutId = layoutId;
 		this.inflater = LayoutInflater.from(context);
 	}
 
@@ -45,7 +47,7 @@ public class MyRecommendGridViewAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		GridViewItemHolder holder;
 		if(convertView == null){
-			convertView = inflater.inflate(R.layout.gridview_item, null);
+			convertView = inflater.inflate(this.layoutId, null);
 			holder = new GridViewItemHolder();
 			holder.imgHolder = (ImageView) convertView.findViewById(R.id.imgGridViewItem);
 			holder.tvHolder = (TextView) convertView.findViewById(R.id.tvGridViewItem);

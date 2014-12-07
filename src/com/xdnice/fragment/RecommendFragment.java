@@ -25,7 +25,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.xdnice.constans.RecommendConstans;
 import com.xdnice.customclass.ApplicationItem;
+import com.xdnice.customclass.MyGridView;
 import com.xdnice.customclass.MyRecommendGridViewAdapter;
 import com.xdnice.customclass.MyViewPagerAdapter;
 import com.xdnice.customclass.MyXListViewAdapter;
@@ -37,10 +39,6 @@ import com.xdnice.xlistview.XListView;
 public class RecommendFragment extends Fragment implements OnPageChangeListener,OnClickListener{
 
 	private static final String TAG = "RecommendFragment";
-	private int[] remenfenleiId ={
-			R.drawable.xinxianchulu,R.drawable.nvshengbibei, R.drawable.biwanyouxi,
-			R.drawable.zhuanqu2345, R.drawable.nanshengbibei,R.drawable.ertongzhuanqu};
-	private String[] remenfenleiStr ={"新鲜出炉","女生必备","必玩游戏","专区","男生必备","儿童专区"};
 	
 	private View view;
 	private TextView tvSift;  //精选
@@ -65,7 +63,9 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 	
 	private XListView xSiftListView;	//xListview
 	SlidingMenu sm;
-	private GridView mGridViewRemenfenlei;
+	private MyGridView mGridViewRemenfenlei;
+	private MyGridView mGridViewGame;
+	private MyGridView mGridViewSoft;
 	
 	public RecommendFragment(SlidingMenu sm) {
 		// TODO Auto-generated constructor stub
@@ -102,6 +102,8 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 		initSiftListView();
 		//初始化classify fragment
 		initClassify();
+		//初始化Ranking fragment
+		initRankingListView();
 		listViews.add(viewSift);
 		listViews.add(viewClassify);
 		listViews.add(viewRanking);
@@ -112,18 +114,55 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 		mViewPager.setOnPageChangeListener(this);
 	}
 	
+	private void initRankingListView(){
+		xSiftListView = (XListView) viewRanking.findViewById(R.id.xListViewRanking);
+		List<ApplicationItem> list = new ArrayList<ApplicationItem>();
+		ApplicationItem item;
+		for(int i=0;i<30;i++){
+			item = new ApplicationItem();
+			list.add(item);
+		}
+		MyXListViewAdapter adapter = new MyXListViewAdapter(list, LayoutInflater.from(context));
+		View header = LayoutInflater.from(context).inflate(R.layout.ranking_header, null);
+		xSiftListView.setHeaderFooter(header, null);
+		xSiftListView.setAdapter(adapter);
+		
+		
+	}
+	
+	
 	private void initClassify(){
+		
+		List<RecommendGridItem> lists = generateGridList(6, RecommendConstans.remenfenleiId, RecommendConstans.remenfenleiStr);
+		MyRecommendGridViewAdapter adapter = new MyRecommendGridViewAdapter(lists,context,R.layout.gridview_item);
+		mGridViewRemenfenlei = (MyGridView) viewClassify.findViewById(R.id.recommend_classify_gridview_remenfenlei);
+		mGridViewRemenfenlei.setAdapter(adapter);
+		
+		lists = generateGridList(10, RecommendConstans.gameId, RecommendConstans.gameStr);
+		mGridViewGame = (MyGridView) viewClassify.findViewById(R.id.recommend_classify_gridview_game);
+		adapter = new MyRecommendGridViewAdapter(lists, context, R.layout.gridview_item);
+		mGridViewGame.setAdapter(adapter);
+	
+		lists = generateGridList(14, RecommendConstans.softwareId, RecommendConstans.softwareStr);
+		mGridViewSoft = (MyGridView) viewClassify.findViewById(R.id.recommend_classify_gridview_soft);
+		adapter = new MyRecommendGridViewAdapter(lists, context, R.layout.gridview_item);
+		mGridViewSoft.setAdapter(adapter);
+	}
+	
+	
+	
+	private List<RecommendGridItem> generateGridList(int count,int[] id, String[] str){
+		
 		List<RecommendGridItem> lists = new ArrayList<RecommendGridItem>();
 		RecommendGridItem item;
-		for(int i=0;i<6;i++){
+		for(int i=0;i<count;i++){
 			item = new RecommendGridItem();
-			item.imageViewId = remenfenleiId[i];
-			item.itemText = remenfenleiStr[i];
+			item.imageViewId = id[i];
+			item.itemText = str[i];
 			lists.add(item);
 		}
-		MyRecommendGridViewAdapter adapter = new MyRecommendGridViewAdapter(lists,context);
-		mGridViewRemenfenlei = (GridView) viewClassify.findViewById(R.id.recommend_classify_gridview_remenfenlei);
-		mGridViewRemenfenlei.setAdapter(adapter);
+		
+		return lists;
 	}
 	
 	
@@ -137,10 +176,11 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 			list.add(item);
 		}
 		MyXListViewAdapter adapter = new MyXListViewAdapter(list, LayoutInflater.from(context));
-		
 		View header = LayoutInflater.from(context).inflate(R.layout.sift_header, null);
 		xSiftListView.setHeaderFooter(header, null);
 		xSiftListView.setAdapter(adapter);
+		
+		
 	}
 	
 	/**

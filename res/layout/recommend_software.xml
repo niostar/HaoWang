@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/tab_item_click_bg"
+    android:orientation="vertical" >
+    
+	<TextView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="软件"
+	    android:textSize="16sp"
+	    android:textColor="@android:color/black"
+	    android:drawableStart="@drawable/classifytitledraw"
+	    android:layout_marginTop="10dp"
+	    />
+	
+	<com.xdnice.customclass.MyGridView 
+	    android:id="@+id/recommend_classify_gridview_soft"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:verticalSpacing="1dp"
+	    android:horizontalSpacing="2dp"
+	    android:stretchMode="columnWidth"
+	    android:gravity="left|center_vertical"
+	    android:numColumns="2"
+	    ></com.xdnice.customclass.MyGridView>
+    
+</LinearLayout>
