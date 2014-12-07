@@ -20,46 +20,52 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.xdnice.customclass.MyPagerAdapter;
+import com.xdnice.customclass.ApplicationItem;
+import com.xdnice.customclass.MyRecommendGridViewAdapter;
+import com.xdnice.customclass.MyViewPagerAdapter;
+import com.xdnice.customclass.MyXListViewAdapter;
+import com.xdnice.customclass.RecommendGridItem;
 import com.xdnice.haowang.R;
+import com.xdnice.xlistview.XListView;
+
 
 public class RecommendFragment extends Fragment implements OnPageChangeListener,OnClickListener{
 
 	private static final String TAG = "RecommendFragment";
+	private int[] remenfenleiId ={
+			R.drawable.xinxianchulu,R.drawable.nvshengbibei, R.drawable.biwanyouxi,
+			R.drawable.zhuanqu2345, R.drawable.nanshengbibei,R.drawable.ertongzhuanqu};
+	private String[] remenfenleiStr ={"新鲜出炉","女生必备","必玩游戏","专区","男生必备","儿童专区"};
 	
 	private View view;
 	private TextView tvSift;  //精选
 	private TextView tvClassify; //分类
 	private TextView tvRanking;  //排行
-	//游标
-	private ImageView imgTabPointer;
+	private ImageView imgTabPointer;	//游标
 	private int selectPageIndex=0;
 	private int currentPager=0;
-	
 	private int tabPointerW;
 	private int offset;
 	private ViewPager mViewPager;
 	private List<View> listViews;
-	private MyPagerAdapter mPagerAdapter;
+	private MyViewPagerAdapter mPagerAdapter;
 	private Context context;
-	//精选viewpager
-	private View viewSift;
-	//分类Viewpager
-	private View viewClassify;
-	//排行
-	private View viewRanking;
+	private View viewSift;	//精选viewpager
+	private View viewClassify;	//分类Viewpager
+	private View viewRanking;	//排行
 	private float screenW;
-	
 	private float currentPointerX=0.0f;
 	private int currentValue;
 	private boolean isBtnChose = false;
 	
-	
+	private XListView xSiftListView;	//xListview
 	SlidingMenu sm;
+	private GridView mGridViewRemenfenlei;
 	
 	public RecommendFragment(SlidingMenu sm) {
 		// TODO Auto-generated constructor stub
@@ -86,12 +92,16 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 	private void initViewPager(){
 		mViewPager = (ViewPager) view.findViewById(R.id.tab_pager);
 		listViews = new ArrayList<View>();
-		mPagerAdapter = new MyPagerAdapter(listViews);
+		mPagerAdapter = new MyViewPagerAdapter(listViews);
 		LayoutInflater inflater = LayoutInflater.from(context);
 		viewSift = inflater.inflate(R.layout.sift_pager, null);
 		viewClassify = inflater.inflate(R.layout.classify_pager, null);
 		viewRanking = inflater.inflate(R.layout.ranking_pager, null);
 		
+		//初始化sift fragment
+		initSiftListView();
+		//初始化classify fragment
+		initClassify();
 		listViews.add(viewSift);
 		listViews.add(viewClassify);
 		listViews.add(viewRanking);
@@ -102,6 +112,36 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 		mViewPager.setOnPageChangeListener(this);
 	}
 	
+	private void initClassify(){
+		List<RecommendGridItem> lists = new ArrayList<RecommendGridItem>();
+		RecommendGridItem item;
+		for(int i=0;i<6;i++){
+			item = new RecommendGridItem();
+			item.imageViewId = remenfenleiId[i];
+			item.itemText = remenfenleiStr[i];
+			lists.add(item);
+		}
+		MyRecommendGridViewAdapter adapter = new MyRecommendGridViewAdapter(lists,context);
+		mGridViewRemenfenlei = (GridView) viewClassify.findViewById(R.id.recommend_classify_gridview_remenfenlei);
+		mGridViewRemenfenlei.setAdapter(adapter);
+	}
+	
+	
+	
+	private void initSiftListView(){
+		xSiftListView = (XListView) viewSift.findViewById(R.id.xListViewSift);
+		List<ApplicationItem> list = new ArrayList<ApplicationItem>();
+		ApplicationItem item;
+		for(int i=0;i<30;i++){
+			item = new ApplicationItem();
+			list.add(item);
+		}
+		MyXListViewAdapter adapter = new MyXListViewAdapter(list, LayoutInflater.from(context));
+		
+		View header = LayoutInflater.from(context).inflate(R.layout.sift_header, null);
+		xSiftListView.setHeaderFooter(header, null);
+		xSiftListView.setAdapter(adapter);
+	}
 	
 	/**
 	 * 初始化pointer的大小和位置
@@ -193,10 +233,7 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 			return;
 		}
 		currentValue = arg2;
-//		Log.v(TAG, "currentPointerX="+currentPointerX);
-//		Log.v(TAG, "currentPager="+currentPager);
-//		Log.v(TAG, "arg2="+arg2);
-//		Log.v(TAG, "arg1="+arg1);
+
 		if(arg2 == 0){
 			return;
 		}
@@ -303,6 +340,7 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 		});
 		imgTabPointer.startAnimation(animation);
 	}
+	
 	
 	
 }
