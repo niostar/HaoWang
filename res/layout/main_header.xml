@@ -54,6 +54,7 @@
             android:layout_toRightOf="@+id/img_btn_home_search"
             android:layout_toLeftOf="@+id/img_btn_home_scan"
             android:background="@drawable/home_search_edit"
+            android:editable="false"
             />
         
        

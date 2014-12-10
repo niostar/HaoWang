@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     android:background="@color/tab_item_click_bg"
     android:orientation="vertical" >
-    
+  
     <ScrollView 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        >
+        > 
     <LinearLayout 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -32,6 +32,6 @@
 	       />
 	    </LinearLayout>
     
-    </ScrollView>
+     </ScrollView> 
 
 </LinearLayout>

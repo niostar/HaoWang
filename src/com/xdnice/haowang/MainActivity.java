@@ -77,7 +77,7 @@ public class MainActivity extends  SlidingFragmentActivity implements OnClickLis
 	private void addFragmentForFooter(){
 		
 		mRecommendFragment = new RecommendFragment(sm);
-		mClassifyFragment  = new ClassifyFragment();
+		mClassifyFragment  = new ClassifyFragment(sm);
 		mListGameFragment = new ListGameFragment();
 		mManageFragment = new ManageFragment();
 		mDownloadFragment = new DownloadFragment();
