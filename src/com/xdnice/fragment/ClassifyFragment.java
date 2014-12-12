@@ -27,12 +27,15 @@ import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.xdnice.constans.RecommendConstans;
+import com.xdnice.constans.SoftwareConstans;
 import com.xdnice.customclass.ApplicationItem;
+import com.xdnice.customclass.MyClassifyListAdapter;
 import com.xdnice.customclass.MyGridView;
 import com.xdnice.customclass.MyRecommendGridViewAdapter;
 import com.xdnice.customclass.MyViewPagerAdapter;
 import com.xdnice.customclass.MyXListViewAdapter;
 import com.xdnice.customclass.RecommendGridItem;
+import com.xdnice.customclass.SoftwareClassifyItem;
 import com.xdnice.haowang.R;
 import com.xdnice.xlistview.XListView;
 
@@ -132,26 +135,22 @@ public class ClassifyFragment extends Fragment implements OnPageChangeListener,O
 	
 	private void initClassify(){
 		lvClassify = (ListView) viewClassify.findViewById(R.id.lv_software_classify_listview);
-		
-	
+		List<SoftwareClassifyItem> lists = new ArrayList<SoftwareClassifyItem>();
+		generateClassifyList(lists);
+		MyClassifyListAdapter adapter = new MyClassifyListAdapter(lists,LayoutInflater.from(context));
+		lvClassify.setAdapter(adapter);
 	}
 	
-	
-	
-	private List<RecommendGridItem> generateGridList(int count,int[] id, String[] str){
-		
-		List<RecommendGridItem> lists = new ArrayList<RecommendGridItem>();
-		RecommendGridItem item;
-		for(int i=0;i<count;i++){
-			item = new RecommendGridItem();
-			item.imageViewId = id[i];
-			item.itemText = str[i];
+	private void generateClassifyList(List<SoftwareClassifyItem> lists){
+		SoftwareClassifyItem item ;
+		for(int i=0;i<SoftwareConstans.fenleiImgId.length;i++){
+			item = new SoftwareClassifyItem();
+			item.imgId = SoftwareConstans.fenleiImgId[i];
+			item.title = SoftwareConstans.fenleiTitle[i];
+			item.items = SoftwareConstans.softwareItemList[i];
 			lists.add(item);
 		}
-		
-		return lists;
 	}
-	
 	
 	
 	private void initSiftListView(){

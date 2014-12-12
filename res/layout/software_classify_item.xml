@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:layout_marginBottom="2dp"
     android:orientation="vertical" >
     
     <RelativeLayout 
         android:layout_width="fill_parent"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:gravity="center_vertical"
-		android:background="@android:color/white"
         >
         <ImageView 
             android:id="@+id/img_classify_item"
@@ -21,27 +22,77 @@
             android:layout_alignParentLeft="true"
             />
         <TextView 
-            android:id="@+id/tv_classify_item"
+            android:id="@+id/tv_classify_item_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_height="fill_parent"
             android:gravity="center_vertical"
             android:textSize="15sp"
+            android:textColor="@android:color/black"
             android:layout_toRightOf="@+id/img_classify_item"
             />
         
         <TextView 
             android:id="@+id/tv_classify_item_more"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_height="fill_parent"
             android:gravity="center_vertical"
             android:textSize="15sp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
+            android:text="全部"
+            android:drawableRight="@drawable/morecomment"
             android:textColor="@color/tab_item_click_text_color"
+            
             />
          
     </RelativeLayout>
+    <TableLayout 
+        android:background="@color/tab_item_click_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        >
+        <TableRow 
+            android:layout_width="fill_parent"
+            android:layout_marginTop="1dp"
+            >
+            <TextView 
+                android:id="@+id/tv_software_classify_itme1"
+                style="@style/SoftwareClassifyItemTextViewStyle"
+                />
+            <TextView 
+                android:id="@+id/tv_software_classify_itme2"
+                style="@style/SoftwareClassifyItemTextViewStyle"
+                />
+            <TextView 
+                android:id="@+id/tv_software_classify_itme3"
+                style="@style/SoftwareClassifyItemTextViewStyle"
+                />
+            <TextView 
+                android:id="@+id/tv_software_classify_itme4"
+                style="@style/SoftwareClassifyItemTextViewStyle"
+                />
+        </TableRow>
+         <TableRow 
+            android:layout_width="fill_parent"
+            android:layout_marginTop="1dp"
+            >
+            <TextView 
+                android:id="@+id/tv_software_classify_itme5"
+                style="@style/SoftwareClassifyItemTextViewStyle"
+                />
+            <TextView 
+                android:id="@+id/tv_software_classify_itme6"
+                style="@style/SoftwareClassifyItemTextViewStyle"
+                />
+            <TextView 
+                android:id="@+id/tv_software_classify_itme7"
+                style="@style/SoftwareClassifyItemTextViewStyle"
+                />
+            <TextView 
+                android:id="@+id/tv_software_classify_itme8"
+                style="@style/SoftwareClassifyItemTextViewStyle"
+                />
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>
