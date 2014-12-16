@@ -67,6 +67,8 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 	private MyGridView mGridViewGame;
 	private MyGridView mGridViewSoft;
 	
+	private float coordinateX;  //图片view坐标系位置
+	
 	public RecommendFragment(SlidingMenu sm) {
 		// TODO Auto-generated constructor stub
 		this.sm = sm;
@@ -111,6 +113,7 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 		mViewPager.setAdapter(mPagerAdapter);
 		mViewPager.setCurrentItem(0);
 		currentPointerX = 0;
+		coordinateX = 0;
 		mViewPager.setOnPageChangeListener(this);
 	}
 	
@@ -260,7 +263,7 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 		if(arg0==0){  //抬起
 			currentPager = selectPageIndex;
 			currentPointerX = currentPager*screenW/3;
-			imgTabPointer.setX(currentPointerX);
+			imgTabPointer.setX(currentPointerX-coordinateX);
 		}
 		
 	}
@@ -281,21 +284,21 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 		if(currentPointerX == currentPager*screenW/3){
 			if(currentValue>screenW/2){//右滑动
 				currentPointerX = currentPager*screenW/3-(screenW-arg2)/3;
-				imgTabPointer.setX(currentPointerX);
+				imgTabPointer.setX(currentPointerX-coordinateX);
 			}else{ //左滑动
 				currentPointerX = currentPager*screenW/3+(arg2)/3;
-				imgTabPointer.setX(currentPointerX);
+				imgTabPointer.setX(currentPointerX-coordinateX);
 			}
 		}
 		
 		if(currentPointerX > currentPager*screenW/3){  //viewpager在中心左侧
 			currentPointerX = currentPager*screenW/3+arg2/3;
-			imgTabPointer.setX(currentPointerX);
+			imgTabPointer.setX(currentPointerX-coordinateX);
 		}
 		
 		if(currentPointerX < currentPager*screenW/3){  ////viewpager在中心右侧
 			currentPointerX = currentPager*screenW/3-(screenW-arg2)/3;
-			imgTabPointer.setX(currentPointerX);
+			imgTabPointer.setX(currentPointerX-coordinateX);
 		}
 		
 		
@@ -347,12 +350,11 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 //		Log.v(TAG, "clickId="+clickId);
 		
 		
-		animation = new TranslateAnimation(0, (clickId-currentPager)*screenW/3, 0, 0);
-		if(animation == null){
-			return;
-		}
-		//animation.setFillAfter(true);
-		animation.setDuration(300);
+		animation = new TranslateAnimation(coordinateX, coordinateX+(clickId-currentId)*screenW/3, 0, 0);
+		coordinateX = coordinateX+(clickId-currentId)*screenW/3;
+		
+		animation.setFillAfter(true);
+		animation.setDuration(30);
 		animation.setAnimationListener(new AnimationListener() {
 			
 			@Override
@@ -370,11 +372,8 @@ public class RecommendFragment extends Fragment implements OnPageChangeListener,
 			@Override
 			public void onAnimationEnd(Animation animation) {
 //				Log.v(TAG, "onAnimationEnd-->selectPageIndex="+selectPageIndex);
-				imgTabPointer.setVisibility(View.INVISIBLE);
 				currentPager = selectPageIndex;
 				currentPointerX = currentPager*screenW/3;
-				imgTabPointer.setX(currentPointerX);
-				imgTabPointer.setVisibility(View.VISIBLE);
 				isBtnChose = false;
 			}
 		});

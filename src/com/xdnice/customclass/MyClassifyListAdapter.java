@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.xdnice.haowang.R;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 public class MyClassifyListAdapter extends BaseAdapter {
 
+	private static final String TAG = "MyClassifyListAdapter";
 	List<SoftwareClassifyItem> lists;
 	LayoutInflater mInflater;
 	
@@ -65,7 +67,9 @@ public class MyClassifyListAdapter extends BaseAdapter {
 		}
 		holder.imgHolder.setBackgroundResource(lists.get(position).imgId);
 		holder.tvTitleHolder.setText(lists.get(position).title);
+		
 		for(int i=0;i<lists.get(position).items.length;i++){
+		
 			holder.tvItems[i].setText(lists.get(position).items[i]);
 		}
 		

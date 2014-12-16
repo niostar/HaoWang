@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <ScrollView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        >
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/tab_item_click_bg"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+           
+            >
+            <com.xdnice.customview.TopList 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                ></com.xdnice.customview.TopList>
+            
+            <com.xdnice.customview.TopList 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                ></com.xdnice.customview.TopList>
+        </LinearLayout>
+    </ScrollView>
+	
+</LinearLayout>

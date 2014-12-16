@@ -36,6 +36,20 @@
             />
         
         <TextView 
+            android:id="@+id/tv_biwan"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:background="@drawable/tab_item_bg"
+            android:textSize="15sp"
+            android:clickable="true"
+            android:text="必玩"
+            android:visibility="gone"
+            />
+        
+        
+        <TextView 
             android:id="@+id/tv_ranking"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -46,6 +60,8 @@
             android:clickable="true"
             android:text="排行"
             />
+        
+        
         
     </LinearLayout>
     

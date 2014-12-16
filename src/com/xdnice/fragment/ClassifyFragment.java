@@ -69,6 +69,7 @@ public class ClassifyFragment extends Fragment implements OnPageChangeListener,O
 	SlidingMenu sm;
 	private ListView lvClassify;
 	
+	private float coordinateX;  //图片view坐标系位置
 	public ClassifyFragment(SlidingMenu sm) {
 		// TODO Auto-generated constructor stub
 		this.sm = sm;
@@ -98,14 +99,14 @@ public class ClassifyFragment extends Fragment implements OnPageChangeListener,O
 		LayoutInflater inflater = LayoutInflater.from(context);
 		viewSift = inflater.inflate(R.layout.sift_pager, null);
 		viewClassify = inflater.inflate(R.layout.software_classify_pager, null);
-		viewRanking = inflater.inflate(R.layout.ranking_pager, null);
+		viewRanking = inflater.inflate(R.layout.software_ranking, null);
 		
 		//初始化sift fragment
 		initSiftListView();
 		//初始化classify fragment
 		initClassify();
 		//初始化Ranking fragment
-	//	initRankingListView();
+		initRankingListView();
 		listViews.add(viewSift);
 		listViews.add(viewClassify);
 		listViews.add(viewRanking);
@@ -117,17 +118,7 @@ public class ClassifyFragment extends Fragment implements OnPageChangeListener,O
 	}
 	
 	private void initRankingListView(){
-		xSiftListView = (XListView) viewRanking.findViewById(R.id.xListViewRanking);
-		List<ApplicationItem> list = new ArrayList<ApplicationItem>();
-		ApplicationItem item;
-		for(int i=0;i<30;i++){
-			item = new ApplicationItem();
-			list.add(item);
-		}
-		MyXListViewAdapter adapter = new MyXListViewAdapter(list, LayoutInflater.from(context));
-		View header = LayoutInflater.from(context).inflate(R.layout.ranking_header, null);
-		xSiftListView.setHeaderFooter(header, null);
-		xSiftListView.setAdapter(adapter);
+		
 		
 		
 	}
@@ -184,6 +175,8 @@ public class ClassifyFragment extends Fragment implements OnPageChangeListener,O
 		matrix.postScale((float)screenW/3/tabPointerW, 1);
 		matrix.postTranslate(0, 0);
 		imgTabPointer.setImageMatrix(matrix);
+		
+		coordinateX = 0;
 		
 		Log.v(TAG, "screenW="+screenW);
 		currentPager = 0;
@@ -245,7 +238,7 @@ public class ClassifyFragment extends Fragment implements OnPageChangeListener,O
 		if(arg0==0){  //抬起
 			currentPager = selectPageIndex;
 			currentPointerX = currentPager*screenW/3;
-			imgTabPointer.setX(currentPointerX);
+			imgTabPointer.setX(currentPointerX-coordinateX);
 		}
 		
 	}
@@ -266,21 +259,21 @@ public class ClassifyFragment extends Fragment implements OnPageChangeListener,O
 		if(currentPointerX == currentPager*screenW/3){
 			if(currentValue>screenW/2){//右滑动
 				currentPointerX = currentPager*screenW/3-(screenW-arg2)/3;
-				imgTabPointer.setX(currentPointerX);
+				imgTabPointer.setX(currentPointerX-coordinateX);
 			}else{ //左滑动
 				currentPointerX = currentPager*screenW/3+(arg2)/3;
-				imgTabPointer.setX(currentPointerX);
+				imgTabPointer.setX(currentPointerX-coordinateX);
 			}
 		}
 		
 		if(currentPointerX > currentPager*screenW/3){  //viewpager在中心左侧
 			currentPointerX = currentPager*screenW/3+arg2/3;
-			imgTabPointer.setX(currentPointerX);
+			imgTabPointer.setX(currentPointerX-coordinateX);
 		}
 		
 		if(currentPointerX < currentPager*screenW/3){  ////viewpager在中心右侧
 			currentPointerX = currentPager*screenW/3-(screenW-arg2)/3;
-			imgTabPointer.setX(currentPointerX);
+			imgTabPointer.setX(currentPointerX-coordinateX);
 		}
 		
 		
@@ -330,14 +323,10 @@ public class ClassifyFragment extends Fragment implements OnPageChangeListener,O
 		Animation animation = null;
 		isBtnChose = true;
 //		Log.v(TAG, "clickId="+clickId);
-		
-		
-		animation = new TranslateAnimation(0, (clickId-currentPager)*screenW/3, 0, 0);
-		if(animation == null){
-			return;
-		}
-		//animation.setFillAfter(true);
-		animation.setDuration(300);
+		animation = new TranslateAnimation(coordinateX, coordinateX+(clickId-currentId)*screenW/3, 0, 0);
+		coordinateX = coordinateX+(clickId-currentId)*screenW/3;
+		animation.setFillAfter(true);
+		animation.setDuration(30);
 		animation.setAnimationListener(new AnimationListener() {
 			
 			@Override
@@ -355,11 +344,10 @@ public class ClassifyFragment extends Fragment implements OnPageChangeListener,O
 			@Override
 			public void onAnimationEnd(Animation animation) {
 //				Log.v(TAG, "onAnimationEnd-->selectPageIndex="+selectPageIndex);
-				imgTabPointer.setVisibility(View.INVISIBLE);
+				
 				currentPager = selectPageIndex;
+				//跟新游标在屏幕上的坐标位置
 				currentPointerX = currentPager*screenW/3;
-				imgTabPointer.setX(currentPointerX);
-				imgTabPointer.setVisibility(View.VISIBLE);
 				isBtnChose = false;
 			}
 		});

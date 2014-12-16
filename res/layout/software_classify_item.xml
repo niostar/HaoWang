@@ -7,7 +7,7 @@
     android:orientation="vertical" >
     
     <RelativeLayout 
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
         android:gravity="center_vertical"
         >
@@ -48,24 +48,27 @@
     </RelativeLayout>
     <TableLayout 
         android:background="@color/tab_item_click_bg"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
         <TableRow 
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_marginTop="1dp"
             >
             <TextView 
                 android:id="@+id/tv_software_classify_itme1"
                 style="@style/SoftwareClassifyItemTextViewStyle"
+                android:layout_marginRight="1dp"
                 />
             <TextView 
                 android:id="@+id/tv_software_classify_itme2"
                 style="@style/SoftwareClassifyItemTextViewStyle"
+                android:layout_marginRight="1dp"
                 />
             <TextView 
                 android:id="@+id/tv_software_classify_itme3"
                 style="@style/SoftwareClassifyItemTextViewStyle"
+                android:layout_marginRight="1dp"
                 />
             <TextView 
                 android:id="@+id/tv_software_classify_itme4"
@@ -79,14 +82,17 @@
             <TextView 
                 android:id="@+id/tv_software_classify_itme5"
                 style="@style/SoftwareClassifyItemTextViewStyle"
+                android:layout_marginRight="1dp"
                 />
             <TextView 
                 android:id="@+id/tv_software_classify_itme6"
                 style="@style/SoftwareClassifyItemTextViewStyle"
+                android:layout_marginRight="1dp"
                 />
             <TextView 
                 android:id="@+id/tv_software_classify_itme7"
                 style="@style/SoftwareClassifyItemTextViewStyle"
+                android:layout_marginRight="1dp"
                 />
             <TextView 
                 android:id="@+id/tv_software_classify_itme8"

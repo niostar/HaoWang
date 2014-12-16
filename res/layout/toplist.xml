@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:id="@+id/tvTopListTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="25dp"
+		android:background="@android:color/white"
+        android:text="Title"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="1dp"
+        />
+    
+    <include 
+        layout="@layout/applicationitem"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
+        />	
+        
+    <include 
+        layout="@layout/applicationitem"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
+        />	
+        
+    <include 
+        layout="@layout/applicationitem"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
+        />	
+        
+    <include 
+        layout="@layout/applicationitem"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
+        />	
+        
+    <include 
+        layout="@layout/applicationitem"
+         android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
+        />	
+        
+    <include 
+        layout="@layout/applicationitem"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
+        />	
+        
+    <include 
+        layout="@layout/applicationitem"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
+        />	
+        
+    <include 
+        layout="@layout/applicationitem"
+         android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
+        />	
+	
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        >
+        <TextView 
+        android:id="@+id/tvTopListMore"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="测试"
+        android:textColor="@color/tab_item_click_text_color"
+        />
+        
+        <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/appstore_category_arrow_right"
+        android:layout_alignParentRight="true"
+        />
+    </RelativeLayout>
+    
+    
+</LinearLayout>
